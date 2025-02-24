@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+
+build="./build"
+lib="./lib"
+
+
+if [ -d "$build" ]; then 
+    echo "Build directory exists"
+else
+    mkdir ./build
+fi
+
+if [ -d "$lib" ]; then 
+    echo "lib directory exists"
+else
+    mkdir ./lib
+fi
+
+echo "building static library and examples in $build"
+
+make
+
+ret=$?
+if [ "$ret" -eq 0 ]; then 
+    echo "build successful"
+else
+    echo "build failed"
+fi
