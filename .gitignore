@@ -1,0 +1,23 @@
+# Ignore build directory
+/build/
+
+# Ignore object files
+*.o
+
+# Ignore static libraries
+*.a
+
+# Ignore compiled executables
+*.out
+*.exe
+
+# Ignore log files
+*.log
+
+# Ignore IDE-specific files (e.g., VS Code, JetBrains)
+.vscode/
+.idea/
+
+# Ignore system files (e.g., macOS, Windows)
+.DS_Store
+Thumbs.db
