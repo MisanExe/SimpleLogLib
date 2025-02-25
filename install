@@ -19,6 +19,7 @@ fi
 echo "building static library and examples in $build"
 
 make
+make example
 
 ret=$?
 if [ "$ret" -eq 0 ]; then 
