@@ -4,6 +4,7 @@
 #include <chrono>
 #include <iostream>
 #include <fstream>
+#include <iostream>
 using namespace sLogger;
 
 static std::string level_to_string(const level_e& level );
@@ -53,6 +54,34 @@ static std::string level_to_string(const level_e& level )
 
 void logger::log(level_e level, std::string msg)
 {
+    //open the assigned log file using fstream
+    std::fstream fs;
+    fs.open(_filePath, std::fstream::out | std::fstream::app); //open log file in append mode
+
+    if (fs.is_open())
+    {
+        auto time = _getTime();
+        fs<<std::put_time(std::localtime(&time), "%F %T");
+        fs<<" ";
+        fs<<level_to_string(level);
+        fs<<" ";
+        fs<<msg;
+        fs<<"\n";
+        fs.close();
+    }else{
+        std::cout<<"unable to open : "<<_filePath<<"\n";
+    }
+    
+}
+
+void logger::log(level_e level, std::string msg, int options)
+{
+    if (options == LOG_TO_TERMINAL){
+        auto time = _getTime();
+        std::cout<<std::put_time(std::localtime(&time), "%F %T")<<" "<<level_to_string(level)<<" "<<msg<<std::endl;
+        return;
+    }
+    
     //open the assigned log file using fstream
     std::fstream fs;
     fs.open(_filePath, std::fstream::out | std::fstream::app); //open log file in append mode

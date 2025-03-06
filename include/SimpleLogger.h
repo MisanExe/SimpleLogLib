@@ -1,6 +1,11 @@
 #pragma once
 #include <string>
 
+/*
+Log options
+*/
+#define LOG_TO_TERMINAL 360
+
 namespace sLogger
 {
     enum level_e
@@ -27,6 +32,12 @@ namespace sLogger
              * @return : none
              */
             void log(level_e level, std::string msg);
+
+           /** @brief : Writes logs to file , with additional options
+            * @param : level_e level (log level : ERROR, WARNING, INFO, DEBUG), string msg(user specified log messages)
+            * @return : none
+            */
+           void log(level_e level, std::string msg, int options);
 
         private :
 
