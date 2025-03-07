@@ -2,9 +2,9 @@
 #include <string>
 
 /*
-Log options
+Log config
 */
-#define LOG_TO_TERMINAL 360
+#define LOG_TO_TERMINAL (1U<<0)
 
 namespace sLogger
 {
@@ -33,11 +33,11 @@ namespace sLogger
              */
             void log(level_e level, std::string msg);
 
-           /** @brief : Writes logs to file , with additional options
+           /** @brief : Writes logs to file , with additional config
             * @param : level_e level (log level : ERROR, WARNING, INFO, DEBUG), string msg(user specified log messages)
             * @return : none
             */
-           void log(level_e level, std::string msg, int options);
+           void log(level_e level, std::string msg, int config);
 
         private :
 

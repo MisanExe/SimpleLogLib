@@ -74,14 +74,14 @@ void logger::log(level_e level, std::string msg)
     
 }
 
-void logger::log(level_e level, std::string msg, int options)
+void logger::log(level_e level, std::string msg, int config)
 {
-    if (options == LOG_TO_TERMINAL){
+    if (config & LOG_TO_TERMINAL){
         auto time = _getTime();
         std::cout<<std::put_time(std::localtime(&time), "%F %T")<<" "<<level_to_string(level)<<" "<<msg<<std::endl;
         return;
     }
-    
+
     //open the assigned log file using fstream
     std::fstream fs;
     fs.open(_filePath, std::fstream::out | std::fstream::app); //open log file in append mode
